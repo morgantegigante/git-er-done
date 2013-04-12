@@ -5,7 +5,8 @@ LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 // define some values used by the panel and buttons
 int lcd_key     = 0;
 int adc_key_in  = 0;
-int state = 0;
+boolean state = false;
+boolean laststate = false;
 #define btnRIGHT  0
 #define btnUP     1
 #define btnDOWN   2
@@ -106,10 +107,10 @@ switch (lcd_key)
     int minStart=minutes;
     int secStart=seconds;
     int timeTotal=(60*minStart+secStart);
-             while (state ==0)
+    int time = 0;
+    int counter = timeTotal - time;
+             while ((state == false) && (counter > 0))
              {
-             for (timeTotal; timeTotal>0; timeTotal--)
-               {
                 topofSelectLoop:
                    lcd.setCursor(0,0);
                    lcd.print("minutes:");
@@ -137,18 +138,27 @@ switch (lcd_key)
                    {
                        case btnSELECT:
                           {
-                            state = 1;   //enabling stop state
+                            delay(200);
+                            state = !state ;
                             break;
                           } 
-                       case btnNONE:
+                   }
+                   time++;
+                 }
+                 while (state == true)
+                 {
+                  lcd_key = read_LCD_buttons();
+                 switch(lcd_key)
+                   {
+                       case btnSELECT:
                           {
-                            state = 0;   //maintain running state
+                            delay(200);
+                            state = !state ;
                             break;
-                          }
+                          } 
                    }
                  }
-             }
-                 break;
+             break;
              }
 case btnNONE:
   {
