@@ -22,16 +22,14 @@ int adc_key_in  = 0;
 // read the buttons
 int read_LCD_buttons()
 {
- adc_key_in = analogRead(0);      // read the value from the sensor
- // my buttons when read are centered at these valies: 0, 144, 329, 504, 741
- // we add approx 50 to those values and check to see if we are close
- if (adc_key_in > VNONE) return btnNONE; // We make this the 1st option for speed reasons s
+ adc_key_in = analogRead(0); 
+ if (adc_key_in > VNONE) return btnNONE; 
  if (adc_key_in < V1)   return btnRIGHT;
  if (adc_key_in < V2)  return btnUP;
  if (adc_key_in < V3)  return btnDOWN;
  if (adc_key_in < V4)  return btnLEFT;
  if (adc_key_in < V5)  return btnSELECT;
- return btnNONE;  // when all others fail, return this...
+ return btnNONE;  
 }
 
 int minutes=0;
@@ -41,25 +39,23 @@ int seconds=0;
 void setup()
 {
   lcd.begin(16, 2);
-
-  
 }
 
 
 void loop()
-
 {
-   lcd.setCursor(0,0);
+  lcd.setCursor(0,0);
   lcd.print("minutes:");
   lcd.setCursor(0,1);
   lcd.print("seconds:"); 
-lcd.setCursor(9,0);
-lcd.print(minutes);
+  lcd.setCursor(9,0);
+  lcd.print(minutes);
 
-lcd.setCursor(9,1);
-lcd.print(seconds,DEC);
-  lcd_key = read_LCD_buttons();  // read the buttons
-switch (lcd_key)               // depending on which button was pushed, we perform an acti
+  lcd.setCursor(9,1);
+  lcd.print(seconds,DEC);
+  lcd_key = read_LCD_buttons(); 
+  
+switch (lcd_key)               
 {
   case btnRIGHT:
     {
@@ -70,7 +66,6 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
     }
   case btnLEFT:
     {
-    //Instructions for what to do on LEFT button press
     minutes=minutes-1;
     delay(200);
         if (minutes < 0)
@@ -82,7 +77,6 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
     }
   case btnUP: 
     {
-    //Instructions for what to do on UP button press
     seconds=seconds+1;
     delay(200);
         if (seconds > 59)
@@ -95,7 +89,6 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
     }
   case btnDOWN:
     {
-    //Instructions for what to do on DOWN button press
     seconds=seconds-1;
     delay(200);
     if (seconds < 0)
@@ -119,9 +112,14 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
              for (timeTotal; timeTotal>0; timeTotal--)
                {
                 topofSelectLoop:
-                   lcd.setCursor(12,0);
+                   lcd.setCursor(0,0);
+                   lcd.print("minutes:");
+                   lcd.setCursor(0,1);
+                   lcd.print("seconds:"); 
+                   lcd.setCursor(9,0);
+                   lcd.setCursor(9,0);
                    lcd.print(minutes); 
-                   lcd.setCursor(12,1);
+                   lcd.setCursor(9,1);
                    lcd.print(seconds); 
                    delay(1000);
                    lcd.clear();
@@ -131,15 +129,25 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
                           seconds=59;
                           minutes=minutes-1;
                        }
+                   if ((minutes ==0) && (seconds == 0)) 
+                      {
+                       break; 
+                      }
                  }
+                 break;
              }
            case btnSELECT:
            {
              pausedSpot:
              delay(200);
-             lcd.setCursor(12,0);
+               lcd.setCursor(0,0);
+              lcd.print("minutes:");
+              lcd.setCursor(0,1);
+              lcd.print("seconds:"); 
+              lcd.setCursor(9,0);
+             lcd.setCursor(9,0);
              lcd.print(minutes); 
-             lcd.setCursor(12,1);
+             lcd.setCursor(9,1);
              lcd.print(seconds); 
              
              switch (lcd_key)
