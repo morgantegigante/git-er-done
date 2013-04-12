@@ -29,7 +29,8 @@ int read_LCD_buttons()
  if (adc_key_in < V3)  return btnDOWN;
  if (adc_key_in < V4)  return btnLEFT;
  if (adc_key_in < V5)  return btnSELECT;
- return btnNONE;  
+ return btnNONE; 
+delay(200); 
 }
 
 int minutes=0;
@@ -60,14 +61,12 @@ switch (lcd_key)
   case btnRIGHT:
     {
     minutes=minutes+1;
-    delay(200);
     lcd.clear();
     break;
     }
   case btnLEFT:
     {
     minutes=minutes-1;
-    delay(200);
         if (minutes < 0)
         {
           minutes=0;
@@ -78,7 +77,6 @@ switch (lcd_key)
   case btnUP: 
     {
     seconds=seconds+1;
-    delay(200);
         if (seconds > 59)
         {
           seconds=00;
@@ -90,7 +88,6 @@ switch (lcd_key)
   case btnDOWN:
     {
     seconds=seconds-1;
-    delay(200);
     if (seconds < 0)
       {
         seconds=59;
@@ -104,13 +101,9 @@ switch (lcd_key)
     int minStart=minutes;
     int secStart=seconds;
     int timeTotal=(60*minStart+secStart);
-     delay(200); 
-       switch (lcd_key)
-       {
-         case btnNONE:
-           { 
-             for (timeTotal; timeTotal>0; timeTotal--)
+       while (lcd_key == btnNONE)
                {
+                while (timeTotal >0)
                 topofSelectLoop:
                    lcd.setCursor(0,0);
                    lcd.print("minutes:");
@@ -134,12 +127,9 @@ switch (lcd_key)
                        break; 
                       }
                  }
-                 break;
-             }
-           case btnSELECT:
+           while (lcd_key == btnSELECT)
            {
              pausedSpot:
-             delay(200);
                lcd.setCursor(0,0);
               lcd.print("minutes:");
               lcd.setCursor(0,1);
@@ -160,14 +150,12 @@ switch (lcd_key)
                      
                  case btnSELECT:
                      {
-                     delay(200);
                      goto topofSelectLoop;
                      break;
                       }
                  } 
              break;
              }
-         }
     break;
     }
 case btnNONE:
