@@ -129,32 +129,9 @@ switch (lcd_key)
                  }
            while (lcd_key == btnSELECT)
            {
-             pausedSpot:
-               lcd.setCursor(0,0);
-              lcd.print("minutes:");
-              lcd.setCursor(0,1);
-              lcd.print("seconds:"); 
-              lcd.setCursor(9,0);
-             lcd.setCursor(9,0);
-             lcd.print(minutes); 
-             lcd.setCursor(9,1);
-             lcd.print(seconds); 
-             
-             switch (lcd_key)
-                 {
-                 case btnNONE:
-                     {
-                     goto pausedSpot;
-                     break;
-                     }
-                     
-                 case btnSELECT:
-                     {
-                     goto topofSelectLoop;
-                     break;
-                      }
-                 } 
-             break;
+             lcd.clear();
+             lcd.print("paused");
+             delay(1000);
              }
     break;
     }
