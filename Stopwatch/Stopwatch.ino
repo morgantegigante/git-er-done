@@ -19,6 +19,9 @@ int adc_key_in  = 0;
 #define V5     700
 #define VNONE  1100
 
+boolean SelectState;
+boolean LastSelectState=false;
+
 // read the buttons
 int read_LCD_buttons()
 {
@@ -29,8 +32,12 @@ int read_LCD_buttons()
  if (adc_key_in < V3)  return btnDOWN;
  if (adc_key_in < V4)  return btnLEFT;
  if (adc_key_in < V5)  return btnSELECT;
- return btnNONE; 
-delay(200); 
+ return btnNONE;  
+ if (lcd_key==btnSELECT);
+   {
+   SelectState!=LastSelectState;
+   }
+   delay(200);
 }
 
 int minutes=0;
@@ -43,6 +50,7 @@ void setup()
 }
 
 
+
 void loop()
 {
   lcd.setCursor(0,0);
@@ -51,7 +59,6 @@ void loop()
   lcd.print("seconds:"); 
   lcd.setCursor(9,0);
   lcd.print(minutes);
-
   lcd.setCursor(9,1);
   lcd.print(seconds,DEC);
   lcd_key = read_LCD_buttons(); 
@@ -101,10 +108,11 @@ switch (lcd_key)
     int minStart=minutes;
     int secStart=seconds;
     int timeTotal=(60*minStart+secStart);
-       while (lcd_key == btnNONE)
+    while (SelectState==true);
+        {
+          {  for (timeTotal; timeTotal>0; timeTotal--);
                {
-                while (timeTotal >0)
-                topofSelectLoop:
+
                    lcd.setCursor(0,0);
                    lcd.print("minutes:");
                    lcd.setCursor(0,1);
@@ -126,14 +134,11 @@ switch (lcd_key)
                       {
                        break; 
                       }
-                 }
-           while (lcd_key == btnSELECT)
-           {
-             lcd.clear();
-             lcd.print("paused");
-             delay(1000);
-             }
-    break;
+               }
+
+          }
+        }
+        break;
     }
 case btnNONE:
   {
@@ -141,6 +146,7 @@ case btnNONE:
   }
 }
 }
+
 
 
 // default = 1023
