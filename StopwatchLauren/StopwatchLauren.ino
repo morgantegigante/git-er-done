@@ -141,9 +141,9 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
             lcd.print(minutes); 
             lcd.setCursor(9,1);
             lcd.print(seconds); 
-            delay(800)
-            lcd.clear()
-            delay(200)
+            delay(800);
+            lcd.clear();
+            delay(800);
             lcd.setCursor(0,0);
             lcd.print("minutes:");
             lcd.setCursor(0,1);
@@ -153,9 +153,9 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
             lcd.print(minutes); 
             lcd.setCursor(9,1);
             lcd.print(seconds); 
-            delay(800)
-            lcd.clear()
-            delay(200)
+            delay(800);
+            lcd.clear();
+            delay(800);
             lcd.setCursor(0,0);
             lcd.print("minutes:");
             lcd.setCursor(0,1);
@@ -169,10 +169,10 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
           }
        switch (lcd_key)
        {
-         case btnNONE
+         case btnNONE:
          {
          }
-         case btnSELECT
+         case btnSELECT:
          {
            pausedSpot:
             delay(200);
@@ -188,14 +188,14 @@ switch (lcd_key)               // depending on which button was pushed, we perfo
             
             switch (lcd_key)
             {
-              case btnNONE
+              case btnNONE:
               {
               goto pausedSpot;
               break;
               }
-             case btnSELECT
+             case btnSELECT:
             {
-              delay(200)
+              delay(200);
             } 
             }
           }
