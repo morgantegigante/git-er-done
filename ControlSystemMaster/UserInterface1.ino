@@ -2,8 +2,12 @@
 
 
 // define some values used by the panel and buttons
-int lcd_key     = 0;
-int adc_key_in  = 0;
+
+
+// read the buttons
+int read_LCD_buttons()
+{
+
 
 #define btnRIGHT  0
 #define btnUP     1
@@ -19,9 +23,6 @@ int adc_key_in  = 0;
 #define V5     700
 #define VNONE  1100
 
-// read the buttons
-int read_LCD_buttons()
-{
  adc_key_in = analogRead(0); 
  delay(100);
  if (adc_key_in > VNONE) return btnNONE; 
@@ -34,7 +35,7 @@ int read_LCD_buttons()
 }
 
 // Initial variables for target temperature and current temperature
-int setTemp=25;
+//int setTemp=25;
 // int currentTemp=25;
 
 
