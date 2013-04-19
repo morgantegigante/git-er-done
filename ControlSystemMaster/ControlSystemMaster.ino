@@ -1,4 +1,6 @@
 #include <LiquidCrystal.h>
+#include <PID_AutoTune_v0.h>
+#include <PID_v1.h>
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
  
 int TempReadPin = 1;
