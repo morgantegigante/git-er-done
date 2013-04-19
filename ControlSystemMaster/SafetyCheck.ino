@@ -1,11 +1,10 @@
 // SafetyFunction
 
-int CurrentTempDegrees = 0;
-
-int SafetyCheck(){
-  if (CurrentTempDegrees>300 == millis()>60000*20)
+void SafetyCheck()
+{
+  if (currentTemp>200)
   {
-    digitalWrite(HeaterPin, LOW);
+    digitalWrite(HeaterPin, HIGH);
     lcd.clear();
     delay(800);
     lcd.setCursor(0,0);
@@ -14,6 +13,5 @@ int SafetyCheck(){
     burning() ;  
   }
 }
-
 
 
