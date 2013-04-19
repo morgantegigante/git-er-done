@@ -35,7 +35,7 @@ int read_LCD_buttons()
 
 // Initial variables for target temperature and current temperature
 int setTemp=25;
-int currentTemp=25;
+// int currentTemp=25;
 
 
 void LCDFunctions()
@@ -114,4 +114,3 @@ case btnNONE:
 
 }
 }
-
