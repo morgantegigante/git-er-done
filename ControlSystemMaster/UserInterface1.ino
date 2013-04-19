@@ -1,8 +1,5 @@
 // UserInput Function
 
-#include <LiquidCrystal.h>
-LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
-
 
 // define some values used by the panel and buttons
 int lcd_key     = 0;
@@ -38,18 +35,11 @@ int read_LCD_buttons()
 
 // Initial variables for target temperature and current temperature
 int setTemp=25;
-int currentTemp=25;
+// int currentTemp=25;
 
-void setup()
+
+void LCDFunctions()
 {
-  lcd.begin(16, 2);
-}
-
-
-void loop()
-{
-
-
 lcd.setCursor(0,0);
   lcd.print("SetTemp:");
   lcd.setCursor(0,1);
@@ -124,4 +114,3 @@ case btnNONE:
 
 }
 }
-

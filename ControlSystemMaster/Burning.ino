@@ -1,6 +1,4 @@
-#include <LiquidCrystal.h>
 
-LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
 byte flame1[8] = {
   B00000,
@@ -46,15 +44,14 @@ byte flame4[8] = {
   B01110,
 };
 
-void setup() {
+
+int burning(){
   lcd.createChar(11, flame1);
   lcd.createChar(12, flame2);
   lcd.createChar(13, flame3);
   lcd.createChar(14, flame4);
   lcd.begin(16, 2);
-}
-
-int burning(){
+  
   for (int position=0; position<15;position++)
 {
   lcd.setCursor(position,0);
@@ -83,9 +80,4 @@ int burning(){
   lcd.write(byte(14));
 }
   delay(700);
-}
-
-
-void loop() {
-  burning();
 }
