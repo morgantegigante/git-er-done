@@ -1,15 +1,16 @@
 // SafetyFunction
 
 int SafetyCheck(){
-  if (temp>300)
+  if (CurrentTempDegrees>300 == millis()>60000*20)
   {
+    digitalWrite(HeaterPin, LOW);
     lcd.clear();
     delay(800)
     lcd.setCursor(0,0);
     lcd.print("WARNING: TOO HOT");
     lcd.setCursor(1,0);
-    lcd.print("UNPLUG ASAP");
-    delay(1000);
+    burning()
+    
   }
 }
 
