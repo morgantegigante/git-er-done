@@ -41,7 +41,6 @@ int read_LCD_buttons()
 
 int LCDFunctions()
 {
-  int UserSetTemp = 0;
 lcd.setCursor(0,0);
   lcd.print("SetTemp:");
   lcd.setCursor(0,1);
@@ -107,6 +106,8 @@ switch (lcd_key)
   case btnSELECT:
     {
     UserSetTemp = setTemp;
+    lcd.setCursor(15,0);
+    lcd.print("ON");
     break;
     }
 case btnNONE:

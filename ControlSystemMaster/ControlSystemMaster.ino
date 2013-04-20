@@ -3,27 +3,28 @@
 #include <PID_v1.h>
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 double Setpoint, Input, Output;
-PID myPID(&Input, &Output, &Setpoint,2,5,1, DIRECT);
+PID myPID(&Input, &Output, &Setpoint,2,0.1,5, DIRECT);
 
 int TempReadPin = 1;
-int HeaterPin = 13; 
+int HeaterPin = 3; 
 int currentTemp = 0;
 int setTemp = 25;
 int lcd_key     = 0;
 int adc_key_in  = 0;
+int UserSetTemp = 0;
 
  void setup()
  {
  pinMode(TempReadPin,INPUT);
  pinMode(HeaterPin,OUTPUT);
  lcd.begin(16, 2);
- Setpoint = 100;
+ Setpoint = 0;
  }
  
  
  void loop()
  {
-   int currentTemp = TemperatureReading();
+   currentTemp = TemperatureReading();
    read_LCD_buttons();
    
    int Setpoint = LCDFunctions();
@@ -32,7 +33,10 @@ int adc_key_in  = 0;
    analogWrite(HeaterPin,Output);
    if (currentTemp > 200)
    {
-   SafetyCheck();
+   //SafetyCheck();
    }
+      delay(500);
+   lcd.clear();
+
    
  }

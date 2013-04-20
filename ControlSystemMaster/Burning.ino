@@ -51,17 +51,19 @@ int burning(){
   lcd.createChar(13, flame3);
   lcd.createChar(14, flame4);
   lcd.begin(16, 2);
+  lcd.setCursor(0,0);
+  lcd.print("WARNING: TOO HOT");
   
   for (int position=0; position<15;position++)
 {
-  lcd.setCursor(position,0);
+  lcd.setCursor(position,1);
   lcd.write(byte(11));
 }
   delay(500);
   lcd.clear();
   for (int position=0; position<15;position++)
 {
-  lcd.setCursor(position,0);
+  lcd.setCursor(position,1);
   lcd.write(byte(12));
 }
   delay(500);
@@ -69,15 +71,16 @@ int burning(){
   
     for (int position=0; position<15;position++)
 {
-  lcd.setCursor(position,0);
+  lcd.setCursor(position,1);
   lcd.write(byte(13));
 }
   delay(500);
   lcd.clear();
     for (int position=0; position<15;position++)
 {
-  lcd.setCursor(position,0);
+  lcd.setCursor(position,1);
   lcd.write(byte(14));
 }
   delay(700);
+  lcd.clear();
 }
