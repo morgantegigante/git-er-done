@@ -120,15 +120,9 @@ unsigned long SysStartTime = 0;
     lcd.setCursor(0,1);
     lcd.print("                ");
   }
-
-   // I didn't know what to do with these
-   read_LCD_buttons();
+  
    HeaterOutput();
-   
-   if (currentTemp > 200)
-   {
    SafetyCheck();
-   }
-      delay(500);
-   lcd.clear(); 
+   delay(500); //what is this delay for???
+   lcd.clear(); //do we want this to clear??
  }
