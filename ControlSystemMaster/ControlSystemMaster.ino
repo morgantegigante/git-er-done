@@ -14,7 +14,8 @@ int adc_key_in  = 0;
 int UserSetTemp = 0;
 int WindowSize = 500;
 unsigned long windowStartTime;
-   
+int stage = 0;
+
  void setup()
  {
  pinMode(TempReadPin,INPUT);
@@ -24,7 +25,6 @@ unsigned long windowStartTime;
  myPID.SetOutputLimits(0, WindowSize);
  myPID.SetMode(AUTOMATIC);
  }
- 
  
  void loop()
  {
