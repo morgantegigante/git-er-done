@@ -33,10 +33,8 @@ int UserSetTemp = 0;
    analogWrite(HeaterPin,Output);
    if (currentTemp > 200)
    {
-   //SafetyCheck();
+   SafetyCheck();
    }
       delay(500);
-   lcd.clear();
-
-   
+   lcd.clear(); 
  }
