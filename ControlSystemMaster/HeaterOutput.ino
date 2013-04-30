@@ -1,6 +1,10 @@
+void setSetpoints()
+{
+
+}
+
 void HeaterOutput()
 {  
-   int Setpoint = LCDFunctions();
    int Input = currentTemp;
    myPID.Compute();
    
