@@ -6,19 +6,23 @@ double Setpoint, Input, Output;
 PID myPID(&Input, &Output, &Setpoint,2,0.1,5, DIRECT);
 
 int TempReadPin = 1;
-int HeaterPin = 3; 
+int HeaterPin = 2; 
 int currentTemp = 0;
 int setTemp = 25;
 int lcd_key     = 0;
 int adc_key_in  = 0;
 int UserSetTemp = 0;
-
+int WindowSize = 500;
+unsigned long windowStartTime;
+   
  void setup()
  {
  pinMode(TempReadPin,INPUT);
  pinMode(HeaterPin,OUTPUT);
  lcd.begin(16, 2);
- Setpoint = 0;
+ windowStartTime = millis();
+ myPID.SetOutputLimits(0, WindowSize);
+ myPID.SetMode(AUTOMATIC);
  }
  
  
@@ -27,10 +31,8 @@ int UserSetTemp = 0;
    currentTemp = TemperatureReading();
    read_LCD_buttons();
    
-   int Setpoint = LCDFunctions();
-   int Input = currentTemp;
-   myPID.Compute();
-   analogWrite(HeaterPin,Output);
+   HeaterOutput();
+   
    if (currentTemp > 200)
    {
    SafetyCheck();
