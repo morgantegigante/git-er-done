@@ -1,22 +1,6 @@
 void setSetpoints()
 {
-   if (stage == 1)
-  ( 
-  int temp1 = LCDFunctions();
-  )
-  if (stage == 2)
-  ( 
-  int temp2 = LCDFunctions();
-  )
-  if (stage == 3)
-  ( 
-  int temp3 = LCDFunctions();
-  )
-  if (stage == 4)
-  ( 
-  int temp4 = LCDFunctions();
-  )
-  int Setpoint = temp1;
+
 }
 
 void HeaterOutput()
