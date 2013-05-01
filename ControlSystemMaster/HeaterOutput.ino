@@ -9,27 +9,27 @@ int setSetpoints()
   unsigned long currentTime = checktime()/1000;
   currentTemp = TemperatureReading();
   int SetSlope = 0;
-  SysStartTime = SysStartTime/1000;
+  unsigned long _SysStartTime = SysStartTime/1000;
   int _Setpoint = 0;
   
-  if ((currentTime - SysStartTime) < PTIME)
+  if ((currentTime - _SysStartTime) < PTIME)
   {
     stage = 1;
-    SetSlope = (150 - startTemp)/(PTIME-SysStartTime);
+    SetSlope = (150 - startTemp)/(PTIME-_SysStartTime);
     _Setpoint = startTemp + (currentTime*SetSlope);
   }
-  if ((currentTime - SysStartTime) < STIME)
+  if ((currentTime - _SysStartTime) < STIME)
   {
     stage = 2;
     _Setpoint = 150;
   }
-  if ((currentTime - SysStartTime) < RTIME)
+  if ((currentTime - _SysStartTime) < RTIME)
   {
     stage = 3;
     SetSlope = (RTEMP-150)/(RTIME-STIME);
     _Setpoint = 150 + (currentTime*SetSlope);
   }
-  if ((currentTime - SysStartTime) < CTIME)
+  if ((currentTime - _SysStartTime) < CTIME)
   {
     stage = 4;
     _Setpoint = 0;
