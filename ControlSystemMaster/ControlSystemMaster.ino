@@ -59,6 +59,12 @@ unsigned long SysStartTime;
  
  void loop()
  {
+  Serial.print("Time")
+  Serial.print("\t")
+  Serial.print("Current Temp")
+  Serial.print("\t")
+  Serial.print("Error Measure")
+  Serial.print("\t")
   if (mode == 0)
   {
       preheatDisplay();
