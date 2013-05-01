@@ -41,26 +41,9 @@ void user_output(){
   
  
 // display time left of entire reflow
-
-
-  unsigned long EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
-  unsigned long TimeNow=millis();                                          // Find time now
-  unsigned long TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process
-  lcd.setCursor(1, 12);                                  // move cursor to initial position
-  EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
-  while (TimeRemaining>0){
-  TimeNow=millis();                                          // Find time now
-  TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process
-  lcd.setCursor(11, 1);                                  // move cursor to initial position
-  lcd.print(TimeRemaining / 60000);
-  lcd.print(":");
-  //print seconds
-  if (TimeRemaining % (60000) >= 10000) //60000 milliseconds in a minute
-
   EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
 
   if (TimeRemaining > 0)
-
   {
       TimeNow=millis();                                          // Find time now
       TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process
@@ -86,5 +69,4 @@ void user_output(){
     lcd.print("GOT-ER-DONE");
     delay(10000);
   }
-}
 }
