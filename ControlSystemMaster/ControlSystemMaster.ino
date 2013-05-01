@@ -27,7 +27,7 @@ int ctime = 60;
 
 unsigned long EndTime;
 unsigned long TimeNow;
-unsigned long TimeRemaining = 0;
+unsigned long TimeRemaining = 1;
 
 // THESE ARE THE OUTPUTS!!! USE THEM! :D
 unsigned long PTIME = 0; //PREHEAT TIME

@@ -44,7 +44,7 @@ void user_output(){
 
   EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
   
-  if (TimeRemaining >= 0)
+  if (TimeRemaining > 0)
   {
       TimeNow=millis();                                          // Find time now
       TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process
