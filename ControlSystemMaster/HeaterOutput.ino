@@ -11,7 +11,7 @@ unsigned long setSetpoints()
   {
     stage = 1;
     SetSlope = (150 - startTemp)/(PTIME);
-    _Setpoint = startTemp + (currentTime*SetSlope);
+    _Setpoint = startTemp + ((currentTime-_SysStartTime)*SetSlope);
   }
   else if ((_TimeRemaining) > (STIME+RTIME))
   {
@@ -22,7 +22,7 @@ unsigned long setSetpoints()
   {
     stage = 3;
     SetSlope = (RTEMP-150)/(RTIME-STIME);
-    _Setpoint = 150 + (currentTime*SetSlope);
+    _Setpoint = 150 + ((currentTime-_SysStartTime)*SetSlope);
   }
   else if ((_TimeRemaining) > (0))
   {

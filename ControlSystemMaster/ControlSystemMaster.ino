@@ -18,11 +18,11 @@ int stage = 1;
 unsigned long startTemp = 25;
 // these variables are for the user interface function
 // don't worry about these
-int ptime = 60;
-int stime = 60;
-int rtime = 45;
-int rtemp = 218;
-int ctime = 60;
+unsigned long ptime = 60;
+unsigned long stime = 60;
+unsigned long rtime = 45;
+unsigned long rtemp = 218;
+unsigned long ctime = 60;
 
 unsigned long EndTime;
 unsigned long TimeNow = 0;
@@ -107,7 +107,8 @@ unsigned long SysStartTime;
       {
         mode = 6;
         SysStartTime = millis();
-        startTemp = TemperatureReading();
+        // startTemp = TemperatureReading();
+        startTemp = 25;
         delay(500);
         lcd.clear();
         break;
