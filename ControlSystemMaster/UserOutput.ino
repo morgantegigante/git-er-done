@@ -1,10 +1,20 @@
 void user_output(){
-// display desired set temp
+
+  // display desired set temp
   lcd.setCursor(1,0);
   lcd.print("set:");
-  if (setTemp<=99){
-    lcd.print(" ");}
-  lcd.print(setTemp);
+  if (stage==1||stage==2){
+    int setTemp=150;
+    lcd.print(setTemp);
+  }
+  else if (stage==3||stage==4) {
+    lcd.print(RTEMP);
+  }
+  else (stage==5){
+    lcd.print(" ");
+    lcd.print(startTemp);
+  }
+
 
 // display current temperature
   lcd.setCursor(0,0);
