@@ -1,7 +1,6 @@
 int TemperatureReading()
 {
-  int CurrentTempVolts = analogRead(TempReadPin);
-  int CurrentTempDegrees = CurrentTempVolts/5 + 25;
+  int CurrentTempDegrees = analogRead(TempReadPin);
   return CurrentTempDegrees;
 }
 

@@ -3,18 +3,7 @@ void user_output(){
   // display desired set temp
   lcd.setCursor(0,1);
   lcd.print("set:");
-  if (stage==1||stage==2){
-    int setTemp=150;
-    lcd.print(setTemp);
-  }
-  if (stage==3) {
-    lcd.print(RTEMP);
-  }
-  if (stage==4){
-    lcd.print(" ");
-    lcd.print(startTemp);
-  }
-
+  lcd.print(Setpoint);
 
 // display current temperature
   lcd.setCursor(0,0);

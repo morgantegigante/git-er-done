@@ -1,16 +1,16 @@
-int setSetpoints()
+unsigned long setSetpoints()
 {
   unsigned long currentTime = TimeNow/1000;
   unsigned long _TimeRemaining = TimeRemaining/1000;
   currentTemp = TemperatureReading();
-  int SetSlope = 0;
+  unsigned long SetSlope = 0;
   unsigned long _SysStartTime = SysStartTime/1000;
-  int _Setpoint = 0;
+  unsigned long _Setpoint = 0;
   
   if ((_TimeRemaining) > (STIME+RTIME+CTIME))
   {
     stage = 1;
-    SetSlope = (150 - startTemp)/(PTIME-_SysStartTime);
+    SetSlope = (150 - startTemp)/(PTIME);
     _Setpoint = startTemp + (currentTime*SetSlope);
   }
   else if ((_TimeRemaining) > (STIME+RTIME))
@@ -34,7 +34,6 @@ int setSetpoints()
 
 void HeaterOutput()
 {  
-   Setpoint = setSetpoints();
    int Input = currentTemp;
    int now = TimeNow;
    myPID.Compute();

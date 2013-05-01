@@ -7,17 +7,15 @@ double Setpoint, Input, Output;
 PID myPID(&Input, &Output, &Setpoint,2,0.1,5, DIRECT);
 
 // define initial necessary variables
-int TempReadPin = 1;
+int TempReadPin = 5;
 int HeaterPin = 2; 
-int currentTemp = 0;
-int setTemp = 25;
+unsigned long currentTemp = 0;
 int lcd_key     = 0;
 int adc_key_in  = 0;
-int UserSetTemp = 0;
 int WindowSize = 500;
 unsigned long windowStartTime;
 int stage = 1;
-int startTemp = 25;
+unsigned long startTemp = 25;
 // these variables are for the user interface function
 // don't worry about these
 int ptime = 60;
@@ -27,7 +25,7 @@ int rtemp = 218;
 int ctime = 60;
 
 unsigned long EndTime;
-unsigned long TimeNow;
+unsigned long TimeNow = 0;
 unsigned long TimeRemaining = 1;
 
 // THESE ARE THE OUTPUTS!!! USE THEM! :D
@@ -123,8 +121,9 @@ unsigned long SysStartTime;
   if (mode == 6)
   {
    user_output();
+   Setpoint = setSetpoints();
    HeaterOutput();
-   SafetyCheck();
+   // SafetyCheck();
   }
   
  }
