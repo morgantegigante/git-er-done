@@ -25,6 +25,10 @@ int rtime = 45;
 int rtemp = 218;
 int ctime = 60;
 
+unsigned long EndTime
+unsigned long TimeNow
+unsigned long TimeRemaining
+
 // THESE ARE THE OUTPUTS!!! USE THEM! :D
 unsigned long PTIME = 0; //PREHEAT TIME
 unsigned long STIME = 0; //SOAK TIME

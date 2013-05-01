@@ -18,18 +18,18 @@ int setSetpoints()
     SetSlope = (150 - startTemp)/(PTIME-_SysStartTime);
     _Setpoint = startTemp + (currentTime*SetSlope);
   }
-  if ((currentTime - _SysStartTime) < STIME)
+  else if ((currentTime - _SysStartTime) < (PTIME+STIME))
   {
     stage = 2;
     _Setpoint = 150;
   }
-  if ((currentTime - _SysStartTime) < RTIME)
+  else if ((currentTime - _SysStartTime) < (PTIME+STIME+RTIME))
   {
     stage = 3;
     SetSlope = (RTEMP-150)/(RTIME-STIME);
     _Setpoint = 150 + (currentTime*SetSlope);
   }
-  if ((currentTime - _SysStartTime) < CTIME)
+  else if ((currentTime - _SysStartTime) < (PTIME+STIME+RTIME+CTIME))
   {
     stage = 4;
     _Setpoint = 0;
