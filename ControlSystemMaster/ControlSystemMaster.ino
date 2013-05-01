@@ -15,7 +15,7 @@ int adc_key_in  = 0;
 int UserSetTemp = 0;
 int WindowSize = 500;
 unsigned long windowStartTime;
-int stage = 0;
+int stage = 1;
 int startTemp = 25;
 // these variables are for the user interface function
 // don't worry about these
