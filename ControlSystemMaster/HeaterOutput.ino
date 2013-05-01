@@ -31,8 +31,8 @@ unsigned long setSetpoints() //identifying setpoints based on current time and w
     _Setpoint = 0;
   }
   //serial debugging
-  Serial.print(SetSlope,DEC);
-  Serial.println();
+  // Serial.print(SetSlope,DEC);
+  // Serial.println();
   
   return _Setpoint;
 }
