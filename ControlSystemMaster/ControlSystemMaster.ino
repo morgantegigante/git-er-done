@@ -15,7 +15,7 @@ int adc_key_in  = 0;
 int UserSetTemp = 0;
 int WindowSize = 500;
 unsigned long windowStartTime;
-int stage = 0;
+int stage = 1;
 int startTemp = 25;
 // these variables are for the user interface function
 // don't worry about these
@@ -25,9 +25,9 @@ int rtime = 45;
 int rtemp = 218;
 int ctime = 60;
 
-unsigned long EndTime
-unsigned long TimeNow
-unsigned long TimeRemaining
+unsigned long EndTime;
+unsigned long TimeNow;
+unsigned long TimeRemaining;
 
 // THESE ARE THE OUTPUTS!!! USE THEM! :D
 unsigned long PTIME = 0; //PREHEAT TIME
@@ -121,9 +121,9 @@ unsigned long SysStartTime;
   }
   if (mode == 6)
   {
+   user_output();
    HeaterOutput();
    SafetyCheck();
-   user_output();
   }
   
  }
