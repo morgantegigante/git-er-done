@@ -62,5 +62,10 @@ void user_output(){
         lcd.print((TimeRemaining % 60000) / 1000);
       }
   }
+  else
+  {
+    lcd.clear();
+    lcd.print("GOT-ER-DONE");
+  }
 }
 
