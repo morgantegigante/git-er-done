@@ -26,16 +26,16 @@ void user_output(){
 // display stage of reflow
   lcd.setCursor(10,0);
   if (stage==1){
-    lcd.print("ramp");
+    lcd.print("ramp  ");
   }
   else if (stage==2){
-    lcd.print("soak");
+    lcd.print("soak  ");
   }
   else if (stage==3){
     lcd.print("reflow");
   }
   else if (stage==4) {
-    lcd.print("cool");
+    lcd.print("cool  ");
   }
 
   
