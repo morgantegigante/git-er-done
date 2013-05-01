@@ -7,10 +7,10 @@ void user_output(){
     int setTemp=150;
     lcd.print(setTemp);
   }
-  else if (stage==3||stage==4) {
+  if (stage==3||stage==4) {
     lcd.print(RTEMP);
   }
-  else (stage==5){
+  if (stage==5){
     lcd.print(" ");
     lcd.print(startTemp);
   }
