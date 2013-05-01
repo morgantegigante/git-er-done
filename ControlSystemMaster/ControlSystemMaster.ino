@@ -25,16 +25,20 @@ int rtime = 45;
 int rtemp = 218;
 int ctime = 60;
 
+unsigned long EndTime
+unsigned long TimeNow
+unsigned long TimeRemaining
+
 // THESE ARE THE OUTPUTS!!! USE THEM! :D
-int PTIME = 0; //PREHEAT TIME
-int STIME = 0; //SOAK TIME
-int RTIME = 0; //REFLOW TIME
-int RTEMP = 0; //REFLOW TEMP
-int CTIME = 0; //COOL TIME
+unsigned long PTIME = 0; //PREHEAT TIME
+unsigned long STIME = 0; //SOAK TIME
+unsigned long RTIME = 0; //REFLOW TIME
+unsigned long RTEMP = 0; //REFLOW TEMP
+unsigned long CTIME = 0; //COOL TIME
 
 int mode = 0; //MODE VARIABLE DEFINES WHICH USER INPUT BEING SPECIFIED
 
-unsigned long SysStartTime = 0;
+unsigned long SysStartTime;
 
 #define btnRIGHT  0
 #define btnUP     1
@@ -122,6 +126,4 @@ unsigned long SysStartTime = 0;
    user_output();
   }
   
-
-
  }
