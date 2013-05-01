@@ -123,6 +123,5 @@ unsigned long SysStartTime = 0;
   
    HeaterOutput();
    SafetyCheck();
-   delay(500); //what is this delay for???
-   lcd.clear(); //do we want this to clear??
+
  }
