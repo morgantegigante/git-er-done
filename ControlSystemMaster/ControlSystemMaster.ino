@@ -26,7 +26,7 @@ unsigned long ctime = 60;
 
 unsigned long EndTime;
 unsigned long TimeNow = 0;
-unsigned long TimeRemaining = 1;
+unsigned long TimeRemaining = 5;
 
 // THESE ARE THE OUTPUTS!!! USE THEM! :D
 unsigned long PTIME = 0; //PREHEAT TIME

@@ -32,7 +32,7 @@ void user_output(){
 // display time left of entire reflow
   EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
 
-  if (TimeRemaining > 0)
+  if (TimeRemaining > 4)
   {
       TimeNow=millis();                                          // Find time now
       TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process
@@ -50,9 +50,10 @@ void user_output(){
         lcd.print((TimeRemaining % 60000) / 1000);
       }
   }
-  if (TimeRemaining <=0)
+  if (TimeRemaining <=4)
   {
     TimeRemaining = 0;
+    Setpoint = 0;
     mode = 0;
     lcd.clear();
     lcd.print("GOT-ER-DONE");
