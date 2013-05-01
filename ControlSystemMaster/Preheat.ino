@@ -42,7 +42,7 @@ int preheat()
   case btnLEFT:
     {
    ptime=ptime-10; // left button decreases by increments of 10
-   if (ptime < 60)
+   if (ptime < 10)
    {
      ptime = 60;
      lcd.setCursor(13,1);
