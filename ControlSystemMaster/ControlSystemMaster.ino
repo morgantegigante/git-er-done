@@ -107,8 +107,8 @@ unsigned long SysStartTime;
       {
         mode = 6;
         SysStartTime = millis();
-        // startTemp = TemperatureReading();
-        startTemp = 25;
+        startTemp = TemperatureReading();
+        // startTemp = 25;     //used during debugging
         delay(500);
         lcd.clear();
         break;
