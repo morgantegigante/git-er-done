@@ -1,6 +1,7 @@
 #include <LiquidCrystal.h>
 #include <PID_AutoTune_v0.h>
 #include <PID_v1.h>
+#include <EEPROM.h>
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 double Setpoint, Input, Output;
 PID myPID(&Input, &Output, &Setpoint,2,0.1,5, DIRECT);
