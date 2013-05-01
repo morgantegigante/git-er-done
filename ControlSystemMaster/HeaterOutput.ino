@@ -3,9 +3,9 @@ unsigned long setSetpoints()
   unsigned long currentTime = TimeNow/1000;
   unsigned long _TimeRemaining = TimeRemaining/1000;
   currentTemp = TemperatureReading();
-  unsigned long SetSlope = 0;
+  unsigned long SetSlope;
   unsigned long _SysStartTime = SysStartTime/1000;
-  unsigned long _Setpoint = 0;
+  unsigned long _Setpoint;
   
   if ((_TimeRemaining) > (STIME+RTIME+CTIME))
   {
@@ -16,12 +16,13 @@ unsigned long setSetpoints()
   else if ((_TimeRemaining) > (STIME+RTIME))
   {
     stage = 2;
+    SetSlope = 0;
     _Setpoint = 150;
   }
   else if ((_TimeRemaining) > (STIME))
   {
     stage = 3;
-    SetSlope = (RTEMP-150)/(RTIME-STIME);
+    SetSlope = (RTEMP-150)/(STIME);
     _Setpoint = 150 + ((currentTime-_SysStartTime)*SetSlope);
   }
   else if ((_TimeRemaining) > (0))
@@ -29,6 +30,9 @@ unsigned long setSetpoints()
     stage = 4;
     _Setpoint = 0;
   }
+  Serial.print(SetSlope,DEC);
+  Serial.println();
+  
   return _Setpoint;
 }
 
