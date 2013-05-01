@@ -55,16 +55,17 @@ unsigned long SysStartTime;
  myPID.SetOutputLimits(0, WindowSize);
  myPID.SetMode(AUTOMATIC);
  greeting();
+   Serial.print("Time");
+  Serial.print("\t");
+  Serial.print("Current Temp");
+  Serial.print("\t");
+  Serial.print("Error Measure");
+  Serial.print("\t");
  }
  
  void loop()
  {
-  Serial.print("Time")
-  Serial.print("\t")
-  Serial.print("Current Temp")
-  Serial.print("\t")
-  Serial.print("Error Measure")
-  Serial.print("\t")
+  
   if (mode == 0)
   {
       preheatDisplay();
@@ -134,8 +135,8 @@ unsigned long SysStartTime;
    user_output();
    Setpoint = setSetpoints();
    HeaterOutput();
-   // SafetyCheck();
-   // monitor_printout();
+   SafetyCheck();
+   monitor_printout();
   }
   
  }
