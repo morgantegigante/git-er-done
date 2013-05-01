@@ -64,8 +64,11 @@ void user_output(){
   }
   else
   {
+    TimeRemaining = 0;
+    mode = 0;
     lcd.clear();
     lcd.print("GOT-ER-DONE");
+    delay(10000);
   }
 }
 
