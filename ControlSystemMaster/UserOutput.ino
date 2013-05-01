@@ -53,7 +53,7 @@ void user_output(){
   if (TimeRemaining <=4)
   {
     TimeRemaining = 0;
-    Setpoint = 0;
+    Setpoint = 0; 
     mode = 0;
     lcd.clear();
     lcd.print("GOT-ER-DONE");

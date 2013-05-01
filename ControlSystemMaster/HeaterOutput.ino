@@ -39,8 +39,8 @@ unsigned long setSetpoints() //identifying setpoints based on current time and w
 
 void HeaterOutput()
 {  
-   int Input = currentTemp;
-   int now = TimeNow;
+   Input = currentTemp;
+   unsigned long now = TimeNow;
    myPID.Compute();      //computation of PID Output
     
   if(now - windowStartTime>WindowSize)

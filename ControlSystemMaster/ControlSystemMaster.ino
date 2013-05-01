@@ -4,7 +4,7 @@
 #include <EEPROM.h>
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 double Setpoint, Input, Output;
-PID myPID(&Input, &Output, &Setpoint,2,0.1,5, DIRECT);
+PID myPID(&Input, &Output, &Setpoint,5,5,1, DIRECT);
 
 // define initial necessary variables
 int TempReadPin = 5;
@@ -112,6 +112,10 @@ unsigned long SysStartTime;
       case btnSELECT:
       {
         mode = 6;
+        lcd.clear();
+        lcd.print("Heating");
+        digitalWrite(HeaterPin,HIGH);
+        delay(30000);
         SysStartTime = millis();
         startTemp = TemperatureReading();
         // startTemp = 25;     //used during debugging
