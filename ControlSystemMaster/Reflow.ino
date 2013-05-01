@@ -41,7 +41,7 @@ int reflow()
   case btnLEFT:
     {
    rtime=rtime-10; // left button decreases by increments of 10
-   if (rtime < 15)
+   if (rtime < 45)
    {
      rtime = 45;
      lcd.setCursor(13,1);

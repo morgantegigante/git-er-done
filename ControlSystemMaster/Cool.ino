@@ -41,7 +41,7 @@ int cool()
   case btnLEFT:
     {
    ctime=ctime-10; // left button decreases by increments of 10
-   if (ctime < 10)
+   if (ctime < 60)
    {
      ctime = 60;
      lcd.setCursor(13,1);
