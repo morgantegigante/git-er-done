@@ -1,7 +1,7 @@
 void user_output(){
 
   // display desired set temp
-  lcd.setCursor(1,0);
+  lcd.setCursor(0,1);
   lcd.print("set:");
   if (stage==1||stage==2){
     int setTemp=150;
@@ -24,7 +24,7 @@ void user_output(){
   lcd.print(currentTemp);
   
 // display stage of reflow
-  lcd.setCursor(0,10);
+  lcd.setCursor(10,0);
   if (stage==1||stage==3){
     lcd.print("ramp");
   }
