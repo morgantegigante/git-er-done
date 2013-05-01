@@ -41,17 +41,16 @@ void user_output(){
   
  
 // display time left of entire reflow
-<<<<<<< HEAD
+
   unsigned long EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
   unsigned long TimeNow=millis();                                          // Find time now
   unsigned long TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process
   lcd.setCursor(1, 12);                                  // move cursor to initial position
-=======
   EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
+  while (TimeRemaining>0){
   TimeNow=millis();                                          // Find time now
   TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process
   lcd.setCursor(11, 1);                                  // move cursor to initial position
->>>>>>> 1f9523495bf77bd5132b21e7b7b02235d757fb43
   lcd.print(TimeRemaining / 60000);
   lcd.print(":");
   //print seconds
@@ -65,4 +64,4 @@ void user_output(){
     lcd.print((TimeRemaining % 60000) / 1000);
   }
 }
-
+}
