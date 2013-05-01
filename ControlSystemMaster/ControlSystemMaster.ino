@@ -105,6 +105,8 @@ unsigned long SysStartTime = 0;
         mode = 6;
         SysStartTime = millis();
         startTemp = TemperatureReading();
+        delay(500);
+        lcd.clear();
         break;
        }
       case btnNONE:
@@ -115,13 +117,11 @@ unsigned long SysStartTime = 0;
   }
   if (mode == 6)
   {
-    lcd.setCursor(0,0);
-    lcd.print("Start. Yay!     ");
-    lcd.setCursor(0,1);
-    lcd.print("                ");
-  }
-  
    HeaterOutput();
    SafetyCheck();
+   user_output();
+  }
+  
+
 
  }

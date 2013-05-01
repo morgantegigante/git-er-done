@@ -7,7 +7,7 @@ void reflowTempDisplay()
  lcd.setCursor(8,1);
  lcd.print((char)223);
  lcd.setCursor(9,1);
- lcd.print("C");
+ lcd.print("C ");
 }
 
 void updateLCDrt()
