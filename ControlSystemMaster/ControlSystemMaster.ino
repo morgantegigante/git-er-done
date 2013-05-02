@@ -189,6 +189,7 @@ unsigned long SysStartTime;
   
   if (mode == 9)
   {
+   monitor_printout();
    if (m == 0)
    {
      screen();
