@@ -15,9 +15,9 @@ void monitor_printout(){
   Serial.print(Error, DEC);
   Serial.print("\t");
 
-  if (mode = 9)
+  if (mode == 9)
   {
-    if (m = 0)
+    if (m == 0)
     {
       Serial.print("Max Temp");
       Serial.print("\t");

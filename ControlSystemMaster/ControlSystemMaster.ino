@@ -77,12 +77,14 @@ unsigned long SysStartTime;
  myPID.SetOutputLimits(0, WindowSize);
  myPID.SetMode(AUTOMATIC);
  greeting();
-   Serial.print("Time");
+ Serial.begin(9600);
+  Serial.print("Time");
   Serial.print("\t");
   Serial.print("Current Temp");
   Serial.print("\t");
   Serial.print("Error Measure");
   Serial.print("\t");
+  Serial.println();
  }
  
  void loop()

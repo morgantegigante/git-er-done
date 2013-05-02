@@ -28,7 +28,7 @@ unsigned long setSetpoints() //identifying setpoints based on current time and w
   else if ((_TimeRemaining) > (0))                    //cooling region
   {
     stage = 4;
-    _Setpoint = 0;
+    _Setpoint = 25;
   }
   //serial debugging
   // Serial.print(SetSlope,DEC);
