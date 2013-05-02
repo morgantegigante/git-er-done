@@ -84,7 +84,6 @@ unsigned long SysStartTime;
   Serial.print("Current Temp");
   Serial.print("\t");
   Serial.print("Error Measure");
-  Serial.print("\t");
   Serial.println();
  }
  
@@ -165,6 +164,7 @@ unsigned long SysStartTime;
    monitor_printout();
    statistics();
    count=count+1;
+<<<<<<< HEAD
    if (TimeRemaining<=10){
      TimeRemaining=0;
      Setpoint=0;
@@ -172,6 +172,18 @@ unsigned long SysStartTime;
      mode=7;
    };
  }
+=======
+
+   
+  if (TimeRemaining <=10)
+  {
+    TimeRemaining = 0;
+    Setpoint = 25;
+    lcd.clear();
+    mode = 7;
+  }
+  }
+>>>>>>> ea18aa629d34617992a2f37df8f9a0c228a5c57c
   
   if (mode == 7)
   {
