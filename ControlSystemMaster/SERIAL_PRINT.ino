@@ -2,7 +2,9 @@
 void monitor_printout(){
   unsigned long Times;
   unsigned long Error;
-  Times = millis();
+  unsigned long TimeNow;
+  TimeNow = millis();
+  Times = TimeNow - SysStartTime
   Error = TemperatureReading() - setSetpoints();
   Error = abs(Error);
   
