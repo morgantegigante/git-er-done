@@ -84,7 +84,6 @@ unsigned long SysStartTime;
   Serial.print("Current Temp");
   Serial.print("\t");
   Serial.print("Error Measure");
-  Serial.print("\t");
   Serial.println();
  }
  
