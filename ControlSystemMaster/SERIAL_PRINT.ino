@@ -13,7 +13,6 @@ void monitor_printout(){
   Serial.print(TemperatureReading(), DEC);
   Serial.print("\t");
   Serial.print(Error, DEC);
-  Serial.print("\t");
   Serial.println();
 
   if (mode == 9)
