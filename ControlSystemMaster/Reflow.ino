@@ -70,10 +70,10 @@ int reflow()
     }
   case btnDOWN:
     {
-    rtime=rtime-1; // down button decreases by increments of 10
-  if (rtime < 60)
+    rtime=rtime-45; // down button decreases by increments of 10
+  if (rtime < 45)
    {
-     rtime = 60;
+     rtime = 1;
      lcd.setCursor(13,1);
      lcd.print("min");
      delay(600);

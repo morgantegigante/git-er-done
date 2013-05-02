@@ -50,13 +50,5 @@ void user_output(){
         lcd.print((TimeRemaining % 60000) / 1000);
       }
   }
-  if (TimeRemaining <=4)
-  {
-    TimeRemaining = 0;
-    Setpoint = 0; 
-    mode = 0;
-    lcd.clear();
-    lcd.print("GOT-ER-DONE");
-    delay(10000);
-  }
+
 }

@@ -56,9 +56,9 @@ int cool()
   case btnUP: 
     {
     ctime=ctime+1; // up button increases by increments of 1
-   if (ctime > 120)
+   if (ctime > 180)
    {
-     ctime = 120;
+     ctime = 180;
     lcd.setCursor(13,1);
      lcd.print("max");
      delay(600);

@@ -16,6 +16,7 @@ int WindowSize = 500;
 unsigned long windowStartTime;
 int stage = 1;
 unsigned long startTemp = 25;
+  
 // these variables are for the user interface function
 // don't worry about these
 unsigned long ptime = 60;
@@ -36,6 +37,27 @@ unsigned long RTEMP = 0; //REFLOW TEMP
 unsigned long CTIME = 0; //COOL TIME
 
 int mode = 0; //MODE VARIABLE DEFINES WHICH USER INPUT BEING SPECIFIED
+
+// these variables are for the statistical function
+unsigned long totalTemp = 0;
+int maxTemp = 0;
+unsigned long count = 0;
+unsigned long sq_error_sum = 0;
+int rms_error = 0;
+int m = 0;
+unsigned long count_p = 0;
+unsigned long count_s = 0;
+unsigned long count_r = 0;
+unsigned long count_c = 0;
+unsigned long temp_p = 0;
+unsigned long temp_s = 0;
+unsigned long temp_r = 0;
+unsigned long temp_c = 0;
+int avg = 0;
+int avg_p = 0;
+int avg_s = 0;
+int avg_r = 0;
+int avg_c = 0;
 
 unsigned long SysStartTime;
 
@@ -137,6 +159,128 @@ unsigned long SysStartTime;
    HeaterOutput();
    SafetyCheck();
    monitor_printout();
+   statistics();
+   count=count+1;
+
+   
+  if (TimeRemaining <=10)
+  {
+    TimeRemaining = 0;
+    Setpoint = 0;
+    lcd.clear();
+    mode = 7;
+  }
   }
   
+  if (mode == 7)
+  {
+    lcd.print("GOT-ER-DONE");
+    delay(2000);
+    mode = 8;
+  }
+  
+  if (mode == 8)
+  {
+  calc();
+  mode = 9;
+  }
+  
+  if (mode == 9)
+  {
+   if (m == 0)
+   {
+     screen();
+     lcd_key = read_LCD_buttons();
+     switch (lcd_key)
+     {
+       case btnSELECT:
+       {
+         m = 1;
+         break;
+       }
+       case btnNONE:
+       {
+         break;
+       }
+     }
+   }
+   if (m == 1)
+   {
+     maxavg();
+     lcd_key = read_LCD_buttons();
+     switch (lcd_key)
+     {
+       case btnSELECT:
+       {
+         m = 2;
+         break;
+       }
+       case btnNONE:
+       {
+         break;
+       }
+     }
+   }
+
+   if (m == 2)
+   {
+     rampsoak();
+     lcd_key = read_LCD_buttons();
+     switch (lcd_key)
+     {
+       case btnSELECT:
+       {
+         m = 3;
+         break;
+       }
+       case btnNONE:
+       {
+         break;
+       }
+     }
+     
+   }
+
+   if (m == 3)
+   {
+     reflowcool();
+     lcd_key = read_LCD_buttons();
+     switch (lcd_key)
+     {
+       case btnSELECT:
+       {
+         m = 4;
+         break;
+       }
+       case btnNONE:
+       {
+         break;
+       }
+     }
+   }
+
+   if (m == 4)
+   {
+     error();
+     lcd_key = read_LCD_buttons();
+     switch (lcd_key)
+     {
+       case btnSELECT:
+       {
+         m = 5;
+         break;
+       }
+       case btnNONE:
+       {
+         break;
+       }
+     }
+   }
+   
+   if (m == 5)
+   {
+     done();
+   } 
+   
+  }
  }
