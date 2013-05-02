@@ -2,7 +2,7 @@
 
 void SafetyCheck()
 {
-  if (currentTemp>300)    //checks for maximum temperature
+  if (currentTemp>300)             //checks for maximum temperature
   {
     digitalWrite(HeaterPin, LOW);  //if above max threshold turns off the heater
     lcd.clear();
@@ -10,11 +10,11 @@ void SafetyCheck()
     lcd.setCursor(0,0);
     lcd.print("OVEN IS ON FIRE");
     lcd.setCursor(1,0);
-    burning() ;                //displays overheat indicator
+    burning() ;                      //displays overheat indicator
   }
-  unsigned long TimeOn=millis()-SysStartTime;
+  unsigned long TimeOn=millis()-SysStartTime; // check time that the system has been on
   if (TimeOn/60000>=20)
-  { digitalWrite(HeaterPin, LOW);  //if above max threshold turns off the heater
+  { digitalWrite(HeaterPin, LOW);  //if above max threshold (20 min), turns off the heater
     lcd.clear();
     lcd.print("OVEN ON TOO LONG");
     lcd.setCursor(1,0);

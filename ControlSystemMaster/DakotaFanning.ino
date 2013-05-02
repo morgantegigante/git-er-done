@@ -1,7 +1,9 @@
 // Fanning (as in Dakota) animation
-// (Hopefully) creates a clockwise rotation of a fan like object over 4 - 5x8 pixel charcters
+// Creates a clockwise rotation of a fan like object over 4 - 5x8 pixel charcters
+// At any given time, only 3 quadrants have "fan arms" in them to create the appearance of rotation
+// Quadrants are named as they would be mathematically
 
-// quadrant 1
+// fan arm for quadrant 1
 byte fan_Q1[8] = {
   B00000,
   B00000,
@@ -12,7 +14,7 @@ byte fan_Q1[8] = {
   B11110,
   B10000,
 };
-// quadrant 2 
+// fan arm for quadrant 2 
 byte fan_Q2[8] = {
   B00000,
   B00000,
@@ -34,7 +36,7 @@ byte fan_Q3[8] = {
   B00000,
   B00000,}; 
 
-// quadrant 4
+// fan arm for quadrant 4
 byte fan_Q4[8] = {
   B11000,
   B01110,
@@ -46,43 +48,39 @@ byte fan_Q4[8] = {
   B00000,
 };
 
-int fanning(){
-// create characters
-  lcd.createChar(1,fan_Q1);
+int fanning(){                //initialize function
+  lcd.createChar(1,fan_Q1);   // create characters for lcd
   lcd.createChar(2,fan_Q2);
   lcd.createChar(3,fan_Q3);
   lcd.createChar(4,fan_Q4);
+ 
+  lcd.setCursor(4,0);         // set cursor to center text on top row 
+  lcd.print("Open lid");      // display message "open lid"
+  lcd.setCursor(2,1);         // set cursor to center text on bottom row
+  lcd.print("Turn on fan!");  // display message "turn on fan!"
   
-// display messge "OPEN LID"//"Turn on fan!"
-  lcd.setCursor(4,0);
-  lcd.print("Open lid");
-  lcd.setCursor(2,1);
-  lcd.print("Turn on fan!");
-  
-   // position 1 (Q2 off)
-  lcd.setCursor(0,0);
-  lcd.print(" ");
+  lcd.setCursor(0,0);         // put animation in position 1, with quadrant 2 off 
+  lcd.print(" ");             // sets up animation on left side of lcd
   lcd.write(byte(1));
   lcd.setCursor(0,1);
   lcd.write(byte(3));
   lcd.write(byte(4));
   
-  lcd.setCursor(14,0);
-  lcd.print(" ");
+  lcd.setCursor(14,0);         // put animation in position 1, with quadrant 2 off 
+  lcd.print(" ");              // sets up animation on right side of lcd
   lcd.write(byte(1));
   lcd.setCursor(0,14);
   lcd.write(byte(3));
   lcd.write(byte(4));
   delay(200);
   
-  // position 2 (Q1 off)
-  lcd.setCursor(0,0);
-  lcd.write(byte(2));
+  lcd.setCursor(0,0);          // put animation in position 2, with quadrant 1 off 
+  lcd.write(byte(2));          // sets up animation on left side of lcd
   lcd.print(" ");
   lcd.setCursor(0,1);
   lcd.write(byte(3));
   lcd.write(byte(4));
-    lcd.setCursor(14,0);
+  lcd.setCursor(14,0);         // sets up animation on right side of lcd
   lcd.write(byte(2));
   lcd.print(" ");
   lcd.setCursor(14,1);
@@ -90,14 +88,13 @@ int fanning(){
   lcd.write(byte(4));
   delay(200);
 
-  // position 3 (Q4 off)
-  lcd.setCursor(0,0);
-  lcd.write(byte(2));
+  lcd.setCursor(0,0);          // put animation in position 3, with quadrant 4 off 
+  lcd.write(byte(2));          // sets up animation on left side of lcd
   lcd.write(byte(1));
   lcd.setCursor(0,1);
   lcd.write(byte(3));
   lcd.print(" ");
-  lcd.setCursor(14,0);
+  lcd.setCursor(14,0);         // sets up animation on right side of lcd
   lcd.write(byte(2));
   lcd.write(byte(1));
   lcd.setCursor(14,1);
@@ -105,21 +102,17 @@ int fanning(){
   lcd.print(" ");
   delay(200);
 
-  
-  // position 4 (Q3 off)
-  lcd.setCursor(0,0);
-  lcd.write(byte(2));
+  lcd.setCursor(0,0);          // put animation in position 4, with quadrant 3 off
+  lcd.write(byte(2));          // sets up animation on left side of lcd
   lcd.write(byte(1));
   lcd.setCursor(0,1);
   lcd.print(" ");
   lcd.write(byte(4));
-  lcd.setCursor(14,0);
+  lcd.setCursor(14,0);         // sets up animation on right side of lcd
   lcd.write(byte(2));
   lcd.write(byte(1));
   lcd.setCursor(14,1);
   lcd.print(" ");
   lcd.write(byte(4));
   delay(200);
-  
-  fan_count=fan_count+1;
   };
