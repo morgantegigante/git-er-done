@@ -4,7 +4,7 @@
 #include <EEPROM.h>
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 double Setpoint, Input, Output;
-PID myPID(&Input, &Output, &Setpoint,5,5,1, DIRECT);
+PID myPID(&Input, &Output, &Setpoint,5,1,5, DIRECT);
 
 // define initial necessary variables
 int TempReadPin = 5;
