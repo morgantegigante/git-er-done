@@ -24,8 +24,8 @@ void user_output(){
     lcd.print("reflow");
   }
   else if (stage==4) {
-    lcd.print("cool  ");
-  }
+      lcd.print("cool");
+  };
 
   
  

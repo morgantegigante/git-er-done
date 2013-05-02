@@ -58,6 +58,7 @@ int avg_p = 0;
 int avg_s = 0;
 int avg_r = 0;
 int avg_c = 0;
+int fan_count=0;
 
 unsigned long SysStartTime;
 
@@ -176,9 +177,14 @@ unsigned long SysStartTime;
   
   if (mode == 7)
   {
+    if (fan_count<6){
+      fanning();
+    }
+    else{
     lcd.print("GOT-ER-DONE");
     delay(2000);
     mode = 8;
+    };
   }
   
   if (mode == 8)
