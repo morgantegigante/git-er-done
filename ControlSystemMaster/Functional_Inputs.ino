@@ -1,7 +1,7 @@
 int read_LCD_buttons()
 {
   adc_key_in = analogRead(0);
-  delay(100); 
+  delay(200); 
   if (adc_key_in < 50) return btnRIGHT;
   else if (adc_key_in < 195) return btnUP;
   else if (adc_key_in < 380) return btnDOWN;
