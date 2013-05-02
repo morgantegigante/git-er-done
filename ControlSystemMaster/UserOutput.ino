@@ -24,15 +24,14 @@ void user_output(){
     lcd.print("reflow");
   }
   else if (stage==4) {
-      lcd.print("cool");
+      lcd.print("cool  ");
   };
 
   
  
 // display time left of entire reflow
   EndTime=(PTIME+STIME+RTIME+CTIME)*1000+SysStartTime;  // Calculate end time of reflow process in milliseconds
-
-  if (TimeRemaining > 100)
+  if (TimeRemaining > 14)
   {
       TimeNow=millis();                                          // Find time now
       TimeRemaining=EndTime-TimeNow;                           // Calculate time remaining in reflow process

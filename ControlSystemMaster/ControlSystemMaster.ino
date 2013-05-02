@@ -27,7 +27,7 @@ unsigned long ctime = 60;
 
 unsigned long EndTime;
 unsigned long TimeNow = 0;
-unsigned long TimeRemaining = 5;
+unsigned long TimeRemaining = 15;
 
 // THESE ARE THE OUTPUTS!!! USE THEM! :D
 unsigned long PTIME = 0; //PREHEAT TIME
@@ -155,6 +155,7 @@ unsigned long SysStartTime;
       }
    }
   }
+  
   if (mode == 6)
   {
    user_output();
@@ -164,27 +165,24 @@ unsigned long SysStartTime;
    monitor_printout();
    statistics();
    count=count+1;
-
-   
-  if (TimeRemaining <=10)
-  {
-    TimeRemaining = 0;
-    Setpoint = 0;
-    lcd.clear();
-    mode = 7;
-  }
-  }
+   if (TimeRemaining<=10){
+     TimeRemaining=0;
+     Setpoint=0;
+     lcd.clear();
+     mode=7;
+   };
+ }
   
   if (mode == 7)
   {
-    if (fan_count<6){
+  fanning();
+  fanning();
+    fanning();
       fanning();
-    }
-    else{
-    lcd.print("GOT-ER-DONE");
-    delay(2000);
-    mode = 8;
-    };
+        fanning();
+          fanning();
+            fanning();
+          mode=8;
   }
   
   if (mode == 8)
