@@ -168,7 +168,7 @@ unsigned long SysStartTime;
   if (TimeRemaining <=10)
   {
     TimeRemaining = 0;
-    _Setpoint = 25;
+    Setpoint = 25;
     lcd.clear();
     mode = 7;
   }
