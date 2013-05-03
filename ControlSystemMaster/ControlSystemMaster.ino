@@ -62,6 +62,7 @@ int fan_count=0;
 
 unsigned long SysStartTime;
 
+//defines buttons for user interface
 #define btnRIGHT  0
 #define btnUP     1
 #define btnDOWN   2
@@ -77,6 +78,7 @@ unsigned long SysStartTime;
  windowStartTime = millis();
  myPID.SetOutputLimits(0, WindowSize);
  myPID.SetMode(AUTOMATIC);
+ //initiates greeting to the user!
  greeting();
  Serial.begin(9600);
   Serial.print("Time");
@@ -89,9 +91,12 @@ unsigned long SysStartTime;
  
  void loop()
  {
-  
+  // modes were used to move through the code 
+  //they are useful to getting the select button to move into different if statements
+
   if (mode == 0)
-  {
+  {   
+      //Displays preheat user input and allows user to select desired preheat/ramp time
       preheatDisplay();
       lcd_key = read_LCD_buttons();
       preheat();
@@ -99,6 +104,7 @@ unsigned long SysStartTime;
   
   if (mode == 1)
   {
+      //Displays soak user input and allows user to select desired soak time
       soakDisplay(); 
       lcd_key = read_LCD_buttons();
       soak();
@@ -106,6 +112,7 @@ unsigned long SysStartTime;
   
   if (mode == 2)
   {
+    //Displays reflow user input and allows user to select desired reflow time
     reflowDisplay();
     lcd_key = read_LCD_buttons();
     reflow();
@@ -113,6 +120,7 @@ unsigned long SysStartTime;
   
   if (mode == 3)
   {
+    //Displays reflow user input and allows user to select desired reflow temperature
     reflowTempDisplay();
     lcd_key = read_LCD_buttons();
     reflowTemp();
@@ -120,13 +128,14 @@ unsigned long SysStartTime;
   
   if (mode == 4)
   {
+    //Displays cool user input and allows user to select desred cool time
     coolDisplay();
     lcd_key = read_LCD_buttons();
     cool();
   }
   if (mode == 5)
   {
-    
+   //Display a ready screen before engaging reflow oven
    lcd.setCursor(0,0);
    lcd.print("Begin? No keys..");
    lcd.setCursor(0,1);
@@ -135,9 +144,10 @@ unsigned long SysStartTime;
    switch (lcd_key)
     {
       case btnSELECT:
-      {
+      { //if select button is pressed - reflow begins
         mode = 6;
         lcd.clear();
+        //Heater delay to have heater warm up before reading time/temp
         lcd.print("Heating");
         digitalWrite(HeaterPin,HIGH);
         delay(30000);
@@ -199,6 +209,7 @@ unsigned long SysStartTime;
   
   if (mode == 8)
   {
+// Calculates statistics
   calc();
   mode = 9;
   }
@@ -207,7 +218,7 @@ unsigned long SysStartTime;
   {
    monitor_printout();
    if (m == 0)
-   {
+   { //displays Reflow statistics intro screen
      screen();
      lcd_key = read_LCD_buttons();
      switch (lcd_key)
@@ -224,7 +235,7 @@ unsigned long SysStartTime;
      }
    }
    if (m == 1)
-   {
+   { //displays average and max temperatures overall
      maxavg();
      lcd_key = read_LCD_buttons();
      switch (lcd_key)
@@ -242,7 +253,7 @@ unsigned long SysStartTime;
    }
 
    if (m == 2)
-   {
+   { //displays average temperatures in ramp and soak stages
      rampsoak();
      lcd_key = read_LCD_buttons();
      switch (lcd_key)
@@ -261,7 +272,7 @@ unsigned long SysStartTime;
    }
 
    if (m == 3)
-   {
+   { //displays average temperatures in reflow and cool stages
      reflowcool();
      lcd_key = read_LCD_buttons();
      switch (lcd_key)
@@ -279,7 +290,7 @@ unsigned long SysStartTime;
    }
 
    if (m == 4)
-   {
+   {//displays rms error value
      error();
      lcd_key = read_LCD_buttons();
      switch (lcd_key)
@@ -297,7 +308,7 @@ unsigned long SysStartTime;
    }
    
    if (m == 5)
-   {
+   { //"thank you for not smoking"
      done();
    } 
    
