@@ -11,7 +11,7 @@ void reflowTempDisplay()
 }
 
 void updateLCDrt()
-{
+{ //prints extra space if number is two digits
   lcd.setCursor(5,1);
   if (rtemp < 100)
   {
@@ -21,7 +21,7 @@ void updateLCDrt()
 }
 
 int reflowTemp()
-{  
+{  //establishes user interface - buttons increase and decrease user set temp
   switch (lcd_key)               
 {
   case btnRIGHT:
@@ -72,7 +72,7 @@ int reflowTemp()
     }
   case btnDOWN:
     {
-    rtemp=rtemp-1; // down button decreases by increments of 10
+    rtemp=rtemp-1; // down button decreases by increments of 1
   if (rtemp < 218)
    {
      rtemp = 218;
@@ -85,7 +85,7 @@ int reflowTemp()
    updateLCDrt();
     break;
     }
-  case btnSELECT:
+  case btnSELECT: //user is finished
     {
     RTEMP= rtemp;
     mode = 4;
@@ -97,5 +97,5 @@ case btnNONE:
     break;
   }
 }
-return RTEMP;
+return RTEMP; //returns user set time
 }
