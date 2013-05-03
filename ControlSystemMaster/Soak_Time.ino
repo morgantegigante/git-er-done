@@ -9,7 +9,7 @@ void soakDisplay()
 }
 
 void updateLCDs()
-{
+{ //prints extra space if number is two digits
   lcd.setCursor(5,1);
   if (stime < 100)
   {
@@ -19,7 +19,7 @@ void updateLCDs()
 }
 
 int soak()
-{  
+{  //establishes user interface- buttons increase and decrease user set time
   switch (lcd_key)               
 {
   case btnRIGHT:
@@ -70,7 +70,7 @@ int soak()
     }
   case btnDOWN:
     {
-    stime=stime-1; // down button decreases by increments of 10
+    stime=stime-1; // down button decreases by increments of 1
   if (stime < 60)
    {
      stime = 60;
@@ -83,7 +83,7 @@ int soak()
    updateLCDs();
     break;
     }
-  case btnSELECT:
+  case btnSELECT: //user is finished
     {
     STIME= stime;
     mode = 2;
@@ -95,5 +95,5 @@ case btnNONE:
     break;
   }
 }
-return STIME;
+return STIME; //returns user set time
 }
