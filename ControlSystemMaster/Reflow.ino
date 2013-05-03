@@ -9,7 +9,7 @@ void reflowDisplay()
 }
 
 void updateLCDr()
-{
+{ //prints extra space if number is two digits
   lcd.setCursor(5,1);
   if (rtime < 100)
   {
@@ -19,7 +19,7 @@ void updateLCDr()
 }
 
 int reflow()
-{  
+{  //establishes user interface - buttons increase and decrease user set time
   switch (lcd_key)               
 {
   case btnRIGHT:
@@ -70,7 +70,7 @@ int reflow()
     }
   case btnDOWN:
     {
-    rtime=rtime-45; // down button decreases by increments of 10
+    rtime=rtime-45; // down button decreases by increments of 1
   if (rtime < 45)
    {
      rtime = 1;
@@ -83,7 +83,7 @@ int reflow()
    updateLCDr();
     break;
     }
-  case btnSELECT:
+  case btnSELECT: //user is finished
     {
     RTIME= rtime;
     mode = 3;
@@ -95,5 +95,5 @@ case btnNONE:
     break;
   }
 }
-return RTIME;
+return RTIME; //returns user set time
 }
