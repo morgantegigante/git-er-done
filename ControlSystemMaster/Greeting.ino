@@ -1,4 +1,4 @@
-
+//this is our little greeting for the lovely user
 
 void greeting()
 {
