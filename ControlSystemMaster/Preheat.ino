@@ -9,7 +9,7 @@ void preheatDisplay()
 }
 
 void updateLCDp()
-{
+{ //prints extra space if number is two digits
   lcd.setCursor(5,1);
   if (ptime < 100)
   {
@@ -19,7 +19,7 @@ void updateLCDp()
 }
 
 int preheat()
-{  
+{  //establishes user interface - buttons increase and decrease user set time
     
   switch (lcd_key)               
 {
@@ -71,7 +71,7 @@ int preheat()
     }
   case btnDOWN:
     {
-    ptime=ptime-1; // down button decreases by increments of 10
+    ptime=ptime-1; // down button decreases by increments of 1
   if (ptime < 60)
    {
      ptime = 60;
@@ -84,7 +84,7 @@ int preheat()
    updateLCDp();
     break;
     }
-  case btnSELECT:
+  case btnSELECT: //user if finished
     {
     PTIME= ptime;
     mode = 1;
@@ -96,5 +96,5 @@ case btnNONE:
     break;
   }
 }
-return PTIME;
+return PTIME; //returns user preheat time
 }
