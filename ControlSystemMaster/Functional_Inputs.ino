@@ -10,6 +10,9 @@ int read_LCD_buttons()
   else return btnNONE; 
 }
 
+
+//all of these functions simply create LCD screen setups for each statistic display needed
+
 void screen()
 {
   lcd.setCursor(0,0);
