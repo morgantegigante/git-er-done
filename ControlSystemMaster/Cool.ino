@@ -9,7 +9,7 @@ void coolDisplay()
 }
 
 void updateLCDc()
-{
+{ //prints extra space if number is two digits
   lcd.setCursor(5,1);
   if (ctime < 100)
   {
@@ -19,7 +19,7 @@ void updateLCDc()
 }
 
 int cool()
-{  
+{  //establishes user interface - buttons increase and decrease user set time
   switch (lcd_key)               
 {
   case btnRIGHT:
@@ -70,7 +70,7 @@ int cool()
     }
   case btnDOWN:
     {
-    ctime=ctime-1; // down button decreases by increments of 10
+    ctime=ctime-1; // down button decreases by increments of 1
   if (ctime < 60)
    {
      ctime = 60;
@@ -83,7 +83,7 @@ int cool()
    updateLCDc();
     break;
     }
-  case btnSELECT:
+  case btnSELECT: //user is finished
     {
     CTIME= ctime;
     mode = 5;
@@ -95,5 +95,5 @@ case btnNONE:
     break;
   }
 }
-return CTIME;
+return CTIME; //returns user set time
 }
