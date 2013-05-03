@@ -1,9 +1,9 @@
 void statistics()
 {
-
-    totalTemp = totalTemp + currentTemp; 
+    
+    totalTemp = totalTemp + currentTemp; //sums the current temperatures, updates each iteration
    
-    // max temperature achieved
+    // max temperature achieved - update if current temp trumps past max temp
    if (currentTemp > maxTemp)
    {
     maxTemp = currentTemp;
@@ -38,7 +38,7 @@ void statistics()
     sq_error_sum = sq_error_sum + square_error;
 }
 
-void calc()
+void calc() //calculates statistics once the reflow oven is done, and final count value is used to get averages
 {
   //average temp overall
   avg = totalTemp/count;
